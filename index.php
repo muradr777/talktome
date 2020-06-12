@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/structure/head.php'); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallace</title>
-</head>
+<header>
+    <div class="logo-elem">
+        <span class="logo-text">Wallace</span>
+    </div>
+</header>
 
-<body>
-    <main class="wrap-it">
-        Hello, World!
-    </main>
-</body>
+<main class="wrap-it">
+    <div class="wl-container" style="background-image: url('assets/img/bg01.jpg');">
+        <form id="wl-create" class="wl-btn">
+            <button class="btn-x" type="submit">Generate</button>
+        </form>
+        <div class="wl-overlay"></div>
+    </div>
+</main>
 
-</html>
+<?php require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/structure/footer.php'); ?>
