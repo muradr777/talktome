@@ -1,6 +1,9 @@
 <?php
 
-require_once('../db/connect.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/roots.php');
+
+// Console Debugger
+$debug = true; // * Turn this off after debugging
 
 if (!isset($_POST['submit'])) {
     exit("Error!");
@@ -8,7 +11,7 @@ if (!isset($_POST['submit'])) {
 }
 
 $ufile = $_FILES['file_upload'];
-$target_dir  = '/Applications/XAMPP/xamppfiles/htdocs/wallace/uploads/'; // TODO: Edit rights
+$target_dir  = rootPath . 'uploads/'; // TODO: Edit rights
 $target_file = $target_dir . basename($ufile['name']);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -16,40 +19,44 @@ $uploadOk = 1;
 // Check if file is actual image
 $check = getimagesize($ufile['tmp_name']);
 
-if ($check !== false) {
-    echo "File is an image - " . $check['mime'] . ".\n";
-    $uploadOk = 1;
-} else {
-    echo "File is not an image.\n";
+if (!$check) {
+    if($debug) new ConsoleDebug("File is not an image.");
     $uploadOk = 0;
 }
 
 // Check file size
 if ($ufile['size'] > 4000000) {
-    echo "Sorry, file is too large.\n";
+    if($debug) new ConsoleDebug("Sorry, file is too large.");
     $uploadOk = 0;
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, this file already exists.\n";
+    if($debug) new ConsoleDebug("Sorry, this file already exists.");
     $uploadOk = 0;
 }
 
 // Check file format
 if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg') {
-    echo "Sorry, this file format is not allowed!\n";
+    if($debug) new ConsoleDebug("Sorry, this file format is not allowed!");
     $uploadOk = 0;
 }
 
 // Check if $uploadOk set to 0 - at least one requirement not passed
 if ($uploadOk == 0) {
     echo "Error. Your File can not be uploaded.\n";
+//     echo <<<HTML
+//         <script>
+//             setTimeout(function() {
+//                 location.href="/upload.php?res=0";
+//             }, 1500);
+//         </script>
+// HTML;
 } else {
     if (move_uploaded_file($ufile['tmp_name'], $target_file)) {
-        echo "The file: " . basename($ufile['name']) . " has been uploaded.\n";
+        if($debug) new ConsoleDebug("The file: " . basename($ufile['name']) . " has been uploaded.");
     } else {
-        echo "Sorry, there was an error uploading your file.\n";
+        if($debug) new ConsoleDebug("Sorry, there was an error uploading your file.");
     }
 }
 
@@ -57,7 +64,7 @@ if ($uploadOk == 0) {
 
 $sql = "INSERT INTO `wallace`.`images` VALUES ('/uploads/'{$ufile['name']})";
 
-$res = mysqli_query($DBCONNECT, $sql);
+$res = mysqli_query($dbconnect, $sql);
 
 if (!$res)
     die("Query Failed!");

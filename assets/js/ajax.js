@@ -42,10 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle form submit
     var changeBgForm = document.getElementById('wl-create');
-    var uploadImageForm = document.getElementById('updImgForm');
 
     if (changeBgForm != undefined)
         changeBgForm.addEventListener('submit', getImageUrl);
-    if (uploadImageForm != undefined)
-        // uploadImageForm.addEventListener('submit', addUrlToDatabase);
 })

@@ -1,4 +1,4 @@
-<?php require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/structure/head.php'); ?>
+<?php require_once('/roots.php'); ?>
 
 <header>
     <div class="logo-elem">

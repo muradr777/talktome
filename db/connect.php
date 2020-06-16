@@ -1,9 +1,7 @@
 <?php
-include "/Applications/XAMPP/xamppfiles/htdocs/wallace/db/dbconnection.inc.php";
+include rootPath . "db/dbconnection.inc.php";
 
-$DBCONNECT = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
+$dbconnect = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 
-if (!$DBCONNECT)
-    die("Connection Failed: " . $DBCONNECT->connect_error);
-
-// mysqli_close($DBCONNECT);
+if (!$dbconnect)
+    die("Connection Failed: " . $dbconnect->connect_error);

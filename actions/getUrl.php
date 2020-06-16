@@ -1,5 +1,4 @@
 <?php
-require_once('../db/connect.php');
 
 if (!isset($_POST)) {
     exit("Error!");
@@ -8,7 +7,7 @@ if (!isset($_POST)) {
 
 $sql = "SELECT `url` FROM `wallace`.`images` ORDER BY RAND() LIMIT 1";
 
-$res = mysqli_query($DBCONNECT, $sql);
+$res = mysqli_query($dbconnect, $sql);
 
 if (!$res)
     die("Query Failed!");
