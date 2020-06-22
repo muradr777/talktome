@@ -1,0 +1,100 @@
+// ==== Media Query 2.1 ====
+
+// Works with Bootstrap's screen sizes
+@mixin mq($class)
+  @if $class == xs
+    @media (max-width: 575px)
+      @content
+
+  @else if $class == sm
+    @media (min-width: 768px)
+      @content
+
+  @else if $class == md
+    @media (min-width: 992px)
+      @content
+
+  @else if $class == lg
+    @media (min-width: 1200px)
+      @content
+
+  @else if $class == rt
+    @media (min-width: 2880px)
+      @content
+
+  @else
+    @warn "Breakpoint mixin supports: xs, sm, md, lg, rt"
+
+@mixin mqBw($class, $min: false, $max: false)
+  @if $class == xs-sm
+    @media (min-width: 576px) and (max-width: 767px)
+      @content
+
+  @else if $class == sm-md
+    @media (min-width: 768px) and (max-width: 991px)
+      @content
+
+  @else if $class == md-lg
+    @media (min-width: 992px) and (max-width: 1199px)
+      @content
+
+  @else if $class == lg-rt
+    @media (min-width: 1200px) and (max-width: 2879px)
+      @content
+
+  @else if $class == false
+    @media (min-width: #{$min}px) and (max-width: #{$max}px)
+      @content
+
+  @else
+    @warn "Breakpoint mixin supports: xs-sm, sm-md, md-lg, lg-rt"
+
+@mixin mqMax($size)
+  @if $size == xs
+    @media screen and (max-width: 575px)
+      @content
+
+  @else if $size == sm
+    @media screen and (max-width: 767px)
+      @content
+
+  @else if $size == md
+    @media screen and (max-width: 991px)
+      @content
+
+  @else if $size == lg
+    @media screen and (max-width: 1199px)
+      @content
+
+  @else if $size == rt
+    @media screen and (max-width: 2879px)
+      @content
+
+  @else
+    @media screen and (max-width: #{$size}px)
+      @content
+
+@mixin mqMin($size)
+  @if $size == xs
+    @media screen and (min-width: 576px)
+      @content
+
+  @else if $size == sm
+    @media screen and (min-width: 768px)
+      @content
+
+  @else if $size == md
+    @media screen and (min-width: 992px)
+      @content
+
+  @else if $size == lg
+    @media screen and (min-width: 1200px)
+      @content
+
+  @else if $size == rt
+    @media screen and (min-width: 2880px)
+      @content
+
+  @else
+    @media screen and (min-width: #{$size}px)
+      @content

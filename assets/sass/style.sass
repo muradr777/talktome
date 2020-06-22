@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand&display=swap')
+@import './media'
 
 // Base
 *
@@ -32,6 +33,10 @@ input:focus
     text-transform: uppercase
     font-family: 'Fredoka One', cursive
 
+.wrapper
+    @include mq(xs)
+        padding: 20px 10px
+
 .form-wrap
     width: 500px
     padding: 2rem
@@ -39,6 +44,9 @@ input:focus
     border-radius: 3px
     border: 1px solid #eaeaea
     transition: border-color .3s
+    @include mq(xs)
+        width: 100%
+        margin: auto
     &:hover
         border-color: #444
 
@@ -120,4 +128,3 @@ input:focus
         border-radius: 3px
         display: inline-block
         background-color: rgba(255,255,255,.5)
-    
