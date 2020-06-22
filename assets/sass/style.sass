@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand&display=swap')
 
 // Base
+*
+    box-sizing: border-box
+
 body
     margin: 0
     padding: 0
@@ -9,84 +12,51 @@ body
 button
     cursor: pointer
 
+a
+    color: #4457eb
+
+input:focus
+    outline: 0
+
 
 // Custom
-.logo-elem
-    top: 1.2rem
-    left: 1.2rem
-    position: absolute
-    z-index: 10
+.header-wrap
+    border-bottom: 1px solid #eaeaea
+    padding: 5px 15px
+   
 .logo-text
-    color: #ffffff
+    color: #444
+    text-align: center
     letter-spacing: 2px
     font-size: 1.8rem
     text-transform: uppercase
     font-family: 'Fredoka One', cursive
 
-.wl-container
-    width: 100%
-    height: 100vh
-    background-position: 0 0
-    background-size: cover
-
-.wl-btn
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    z-index: 10
-    .btn-x
-        color: #ffffff
-        font-size: 1.5rem
-        padding: 12px 42px
-        font-family: inherit
-        border-radius: 1.2rem
-        border: 1px solid #fff
-        text-transform: uppercase
-        background-color: transparent
-        transition: background-color .3s
-        &:focus
-            outline: none
-        &:hover
-            background-color: rgba(53,53,53, .36)
-
-.upload-lnk
-    padding: 15px 0
-    text-align: center
-    text-transform: uppercase
-    >a
-        color: #4457eb
-        transition: color .3s
-        &:hover
-            color: #fafafa
-
-.wl-overlay
-    content: ''
-    z-index: 9
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-color: rgba(30,30,30,.25)
-
-// UPLOAD
-.wl-upload
-    padding: 60px 40px
-
-#updImgForm,
+.form-wrap
     width: 500px
-    margin: auto
-    padding: 1rem 0
-    text-align: center
-    background-color: #eeeeee
+    padding: 2rem
+    margin: 20vh auto
+    border-radius: 3px
+    border: 1px solid #eaeaea
+    transition: border-color .3s
+    &:hover
+        border-color: #444
 
-.back-lnk
-    @extend #updImgForm
-    text-align: left
-    background-color: #ffffff
-    >a
-        color: #4457eb
+.form-group
+   
+    >label
+        display: block
+        margin-bottom: 10px
+    >input
+        width: 100%
+        border: none
+        padding: 10px 12px
+        font-family: inherit
+        border-bottom: 1px solid #eaeaea
+        transition: border-color .3s
+        &:focus
+            border-bottom-color: #444
+    
 
 
 .alerts 

@@ -10,7 +10,7 @@ if (!isset($_POST['submit']) || $_FILES['file_upload']['size'] == 0) {
 }
 
 $ufile = $_FILES['file_upload'];
-$target_dir  = rootPath . 'uploads/'; // TODO: Edit rights
+$target_dir  = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; // TODO: Edit rights
 $target_file = $target_dir . basename($ufile['name']);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
