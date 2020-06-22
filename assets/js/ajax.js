@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Make action after response
     var changeBackground = function (imgUrl) {
+        
         document.querySelector('.wl-container').style.backgroundImage = "url(" + imgUrl + ")";
     }
 
@@ -10,12 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var getImageUrl = function (e) {
         e.preventDefault();
         var request = "POST",
-            url = "./ajax/getUrl.php",
+            url = "./actions/getUrl.php",
             xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                changeBackground(this.responseText);
+               changeBackground(this.responseText);
             }
         }
 
@@ -23,21 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         xhttp.send();
 
         return;
-    };
-
-    var addUrlToDatabase = function (e) {
-        e.preventDefault();
-
-        var request = "POST",
-            url = "./ajax/uploadImage.php",
-            xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function () {
-            console.log('READY!');
-        };
-
-        xhttp.open(request, url, true);
-        xhttp.send();
     };
 
     // Handle form submit

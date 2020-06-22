@@ -1,5 +1,5 @@
 <?php
-include rootPath . "db/dbconnection.inc.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/db/dbconnection.inc.php";
 
 $dbconnect = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 

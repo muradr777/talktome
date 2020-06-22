@@ -5,6 +5,8 @@ if (!isset($_POST)) {
     die();
 }
 
+require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/db/connect.php');
+
 $sql = "SELECT `url` FROM `wallace`.`images` ORDER BY RAND() LIMIT 1";
 
 $res = mysqli_query($dbconnect, $sql);

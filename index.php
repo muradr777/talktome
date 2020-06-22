@@ -1,4 +1,4 @@
-<?php require_once('/roots.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/roots.php'); ?>
 
 <header>
     <div class="logo-elem">
@@ -7,12 +7,18 @@
 </header>
 
 <main class="wrap-it">
-    <div class="wl-container" style="background-image: url('assets/img/bg01.jpg');">
+    <div class="wl-container" style="background-image: url('uploads/bg01.jpg');">
         <form id="wl-create" class="wl-btn">
             <button class="btn-x" type="submit">Generate</button>
+            <div class="loading-wait">
+                <span class="iVisible">W</span>
+            </div>
+            <div class="upload-lnk">
+                <a href="/upload.php" class="">/upload</a>
+            </div>
         </form>
         <div class="wl-overlay"></div>
     </div>
 </main>
 
-<?php require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/structure/footer.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/structure/footer.php'); ?>

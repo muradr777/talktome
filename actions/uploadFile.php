@@ -4,8 +4,7 @@ require_once('/Applications/XAMPP/xamppfiles/htdocs/wallace/roots.php');
 
 // Console Debugger
 $debug = true; // * Turn this off after debugging
-
-if (!isset($_POST['submit'])) {
+if (!isset($_POST['submit']) || $_FILES['file_upload']['size'] == 0) {
     exit("Error!");
     die();
 }
@@ -62,7 +61,7 @@ if ($uploadOk == 0) {
 
 
 
-$sql = "INSERT INTO `wallace`.`images` VALUES ('/uploads/'{$ufile['name']})";
+echo $sql = "INSERT INTO `wallace`.`images` VALUES (0, '/uploads/{$ufile['name']}')";
 
 $res = mysqli_query($dbconnect, $sql);
 
