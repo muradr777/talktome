@@ -11,7 +11,7 @@
 <header>
     <div class="header-wrap">
         <div class="logo-text">
-            TalkToMe
+            Talk<span>To</span>Me
         </div>
     </div>
 </header>

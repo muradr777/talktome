@@ -9,6 +9,17 @@ body
     margin: 0
     padding: 0
     font-family: 'Quicksand', sans-serif
+    &:before
+        content: ''
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        z-index: -1
+        opacity: 0.07
+        position: absolute
+        background-size: cover
+        background-image: url('/assets/img/bg1.jpeg')   
 
 button
     cursor: pointer
@@ -22,7 +33,9 @@ input:focus
 
 // Custom
 .header-wrap
+    background-color: #fafafa
     border-bottom: 1px solid #eaeaea
+    box-shadow: 0 1px 2px 0 #eaeaea
     padding: 5px 15px
    
 .logo-text
@@ -32,6 +45,11 @@ input:focus
     font-size: 1.8rem
     text-transform: uppercase
     font-family: 'Fredoka One', cursive
+    span
+        transition: opacity .3s ease-in-out
+    &:hover span
+        opacity: 0.6
+
 
 .wrapper
     @include mq(xs)
@@ -39,11 +57,12 @@ input:focus
 
 .form-wrap
     width: 500px
-    padding: 2rem
+    background-color: #fafafa
+    padding: 2.2rem 2rem 1.8rem
     margin: 20vh auto
     border-radius: 3px
-    border: 1px solid #eaeaea
-    transition: border-color .3s
+    border: 1px solid #ddd
+    transition: border-color .3s ease-in-out, transform 2s
     @include mq(xs)
         width: 100%
         margin: auto
@@ -60,8 +79,9 @@ input:focus
         border: none
         padding: 10px 12px
         font-family: inherit
+        background-color: transparent
         border-bottom: 1px solid #eaeaea
-        transition: border-color .3s
+        transition: border-color .3s ease-in-out
         &:focus
             border-bottom-color: #444
     
@@ -128,3 +148,27 @@ input:focus
         border-radius: 3px
         display: inline-block
         background-color: rgba(255,255,255,.5)
+
+// Form Customize
+.changePosition
+    transform: translateY(70%)
+.alert
+    opacity: 0
+    height: 20px
+    display: block
+    color: #eb633d
+    font-size: 12px
+    margin-top: 5px
+    letter-spacing: 2px
+    transition: transform 2s, opacity 1s ease-in-out
+    transform: translateY(20px)
+    &.shown
+        opacity: 1
+        transform: translateY(0)
+
+// Answer
+.answer-wrap
+    opacity: 0
+    transition: opacity 1s ease-in-out
+    &.shown
+        opacity: 1
