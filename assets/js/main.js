@@ -3,7 +3,7 @@
 let mindForm = document.getElementById('mindForm');
 
 const alertExeption = message => {
-    var alert = document.getElementById('alert');
+    let alert = document.getElementById('alert');
     alert.innerHTML = message;
     alert.classList.add('shown');
     setTimeout(() => {
@@ -16,7 +16,26 @@ const pullFormBack = elem => elem.classList.remove('changePosition');
 
 const inputEmpty = () => document.getElementById('message').value.length == 0;
 
-mindForm.addEventListener('input', () => { if(inputEmpty()) pullFormBack(mindForm.parentNode) });
+const showAnswer = () => {
+    let answer = document.getElementById('answer');
+    answer.innerHTML = 'Stay calm ...';
+    setTimeout(() => {
+        answer.parentNode.classList.add('shown');
+    }, 2000);
+};
+
+const hideAnswer = () => {
+    let answer = document.getElementById('answer');
+    answer.parentNode.classList.remove('shown');
+};
+
+mindForm.addEventListener('input', () => {
+    if(inputEmpty()) {
+        pullFormBack(mindForm.parentNode)    
+        hideAnswer();
+    }
+});
+
 
 mindForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -26,4 +45,5 @@ mindForm.addEventListener('submit', e => {
     }
     
     pushFormDown(mindForm.parentNode);
+    showAnswer();
 });
