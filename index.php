@@ -14,6 +14,8 @@
         </form>
     </div>
 
+    <div id="player"></div>
+
 </main>
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/structure/footer.php'); ?>
