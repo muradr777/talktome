@@ -80,10 +80,9 @@ mindForm.addEventListener('input', () => {
         pullFormBack(mindForm.parentNode)    
         hideAnswer();
     }
+    // TODO: Sound starting on input when sound off
     if(soundOn)
         document.getElementById('volDown').classList.add('shown');
-    else
-        document.getElementById('volUp').classList.add('shown');
 });
 
 if(!typing) {
@@ -119,11 +118,13 @@ let volDown = document.getElementById('volDown');
 volUp.addEventListener('click', () => {
     swapVolBtns(volDown, volUp);
     player.playVideo();
+    soundOn = true;
 });
 
 volDown.addEventListener('click', () => {
     swapVolBtns(volUp, volDown);
     player.stopVideo();
+    soundOn = false;
 });
 
 // * YT Player

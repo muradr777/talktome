@@ -12,7 +12,7 @@
 <header>
     <div class="header-wrap">
         <div class="logo-text">
-            Talk<span>To</span>Me
+            <img src="/assets/img/parrot.svg" alt="logo">Talk<span>To</span>Me
         </div>
     </div>
 </header>
