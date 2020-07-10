@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkToMe</title>
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/9af195ccd9.js" crossorigin="anonymous"></script>
+</head>
+
+<header>
+    <div class="header-wrap">
+        <div class="logo-text">
+            <img src="assets/img/parrot.svg" alt="logo">Talk<span>To</span>Me<small>Beta</small>
+        </div>
+    </div>
+</header>
+
+<body>
+
+<main class="wrapper">
+
+    <div class="answer-wrap"><span id="answer"></span></div>
+
+    <div class="form-wrap">
+        <form id="mindForm">
+            <div class="form-group">
+                <label for="message">What're you thinking about?</label>
+                <input id="message" name="message" type="text" placeholder="Type your message here..." autocomplete="off"/>
+                <span id="alert" class="alert"></span>
+            </div>
+        </form>
+        <button id="volDown" type="button" class="volWrap vLeft">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <button id="volUp" type="button" class="volWrap vRight">
+            <i class="fas fa-volume-mute"></i>
+        </button>
+        <span class="user-headset">
+            Headphones recommended <i class="fas fa-headphones"></i>
+        </span>
+    </div>
+    <div id="player"></div>
+
+</main>
+
+<div class="copyrights">
+    <span>Murad Rustamov © 2020</span>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>
