@@ -1,4 +1,5 @@
 'use strict';
+let mute = false;
 let typing = false;
 let soundOn = false;
 let animationRunning = false;
@@ -81,15 +82,22 @@ mindForm.addEventListener('input', () => {
         hideAnswer();
     }
     // TODO: Sound starting on input when sound off
-    if(soundOn)
+    if(soundOn && !mute)
         document.getElementById('volDown').classList.add('shown');
+    
 });
 
-if(!typing) {
-    mindForm.addEventListener('input', () => player.playVideo());
-    typing = true;
-    soundOn = true;
-}
+mindForm.addEventListener('input', () => {
+    if(!typing) {
+        typing = true;
+        
+        if(!mute) {
+            player.playVideo();
+            soundOn = true;
+        }
+    }
+});
+
 
 mindForm.addEventListener('submit', e => {
     
@@ -118,13 +126,13 @@ let volDown = document.getElementById('volDown');
 volUp.addEventListener('click', () => {
     swapVolBtns(volDown, volUp);
     player.playVideo();
-    soundOn = true;
+    mute = false;
 });
 
 volDown.addEventListener('click', () => {
     swapVolBtns(volUp, volDown);
     player.stopVideo();
-    soundOn = false;
+    mute = true;
 });
 
 // * YT Player
