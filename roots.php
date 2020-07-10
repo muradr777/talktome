@@ -1,7 +1,7 @@
 <?php
 
 // DB Connection
-require_once $_SERVER['DOCUMENT_ROOT'] . "/db/connect.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . "/db/connect.php";
 
 // Document Head
 require_once $_SERVER['DOCUMENT_ROOT'] . "/structure/head.php";

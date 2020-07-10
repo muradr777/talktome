@@ -2,4 +2,4 @@
 $SERVERNAME = "localhost";
 $USERNAME = "root";
 $PASSWORD = "";
-$DBNAME = "wallace";
+$DBNAME = "talktome";

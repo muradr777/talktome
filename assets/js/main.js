@@ -1,7 +1,10 @@
 'use strict';
 let typing = false;
 let soundOn = false;
+let animationRunning = false;
 let mindForm = document.getElementById('mindForm');
+
+let quotes = [];
 
 const alertExeption = message => {
     let alert = document.getElementById('alert');
@@ -17,18 +20,24 @@ const pullFormBack = elem => elem.classList.remove('changePosition');
 
 const inputEmpty = () => document.getElementById('message').value.length == 0;
 
-const showAnswer = (i = 0) => {
+
+
+const showAnswer = (array, i = 0) => {
+    animationRunning = true;
+
     let answer = document.getElementById('answer');
-    const array = ['Stay calm', 'Take a deep breath', 'Everithing is possible.'];
     answer.innerHTML = array[i];
     setTimeout(() => {
         answer.parentNode.classList.add('shown');
         setTimeout(() => {
-            if(i != array.length-1)
-                hideAnswer();
+            hideAnswer();
             setTimeout(() => {
                 if(i < array.length-1)
-                    showAnswer(++i);
+                    showAnswer(array, ++i);
+                else {
+                    animationRunning = false;
+                    pullFormBack(mindForm.parentNode);
+                }
             }, 2000);
         }, 2000);
     }, 2000);
@@ -37,6 +46,29 @@ const showAnswer = (i = 0) => {
 };
 
 const hideAnswer = () => document.getElementById('answer').parentNode.classList.remove('shown');
+
+// Read JSON File
+const getJsonQuotes = lang => {
+    let file = '/assets/js/data_' + lang + '.json';
+    let xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/json");
+    xhr.open('GET', file, true);
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            quotes = JSON.parse(this.responseText);
+        }
+    }
+    xhr.send(null);
+};
+
+const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
+
+
+const getRandomQuote = () => {
+    let data = quotes;
+    return data[getRandomInt(data.length)];
+};
+
 
 mindForm.addEventListener('input', () => {
     if(inputEmpty()) {
@@ -53,14 +85,22 @@ if(!typing) {
 mindForm.addEventListener('submit', e => {
     
     e.preventDefault();
+    
+    if(animationRunning) {
+        alertExeption("Do not rush ...");
+        return;
+    }
+
     if(inputEmpty()) {
         alertExeption("You forgot to type in your message ...");
         return;
     }
     
     pushFormDown(mindForm.parentNode);
-    showAnswer();
+    showAnswer(getRandomQuote());
+    
 });
+
 
 // * YT Player
 var tag = document.createElement('script');
@@ -81,3 +121,7 @@ function onYouTubeIframeAPIReady() {
     });
 
 }
+
+window.addEventListener('load', () => {
+    getJsonQuotes('en');
+});
