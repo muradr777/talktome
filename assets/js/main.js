@@ -15,8 +15,8 @@ const alertExeption = message => {
     }, 3000);
 };
 
-const pushFormDown = elem => elem.classList.add('changePosition');
-const pullFormBack = elem => elem.classList.remove('changePosition');
+const pushFormDown = elem => { if(!animationRunning) elem.classList.add('changePosition') };
+const pullFormBack = elem => { if(!animationRunning)  elem.classList.remove('changePosition') };
 
 const inputEmpty = () => document.getElementById('message').value.length == 0;
 
@@ -24,7 +24,7 @@ const inputEmpty = () => document.getElementById('message').value.length == 0;
 
 const showAnswer = (array, i = 0) => {
     animationRunning = true;
-
+    
     let answer = document.getElementById('answer');
     answer.innerHTML = array[i];
     setTimeout(() => {
@@ -69,17 +69,27 @@ const getRandomQuote = () => {
     return data[getRandomInt(data.length)];
 };
 
+const swapVolBtns = (show, hide) => {
+    show.classList.add('shown');
+    hide.classList.remove('shown');
+};
+
 
 mindForm.addEventListener('input', () => {
     if(inputEmpty()) {
         pullFormBack(mindForm.parentNode)    
         hideAnswer();
     }
+    if(soundOn)
+        document.getElementById('volDown').classList.add('shown');
+    else
+        document.getElementById('volUp').classList.add('shown');
 });
 
 if(!typing) {
     mindForm.addEventListener('input', () => player.playVideo());
     typing = true;
+    soundOn = true;
 }
 
 mindForm.addEventListener('submit', e => {
@@ -101,6 +111,20 @@ mindForm.addEventListener('submit', e => {
     
 });
 
+
+// Vol
+let volUp = document.getElementById('volUp');
+let volDown = document.getElementById('volDown');
+
+volUp.addEventListener('click', () => {
+    swapVolBtns(volDown, volUp);
+    player.playVideo();
+});
+
+volDown.addEventListener('click', () => {
+    swapVolBtns(volUp, volDown);
+    player.stopVideo();
+});
 
 // * YT Player
 var tag = document.createElement('script');

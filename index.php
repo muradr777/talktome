@@ -12,8 +12,16 @@
                 <span id="alert" class="alert"></span>
             </div>
         </form>
+        <button id="volDown" type="button" class="volWrap vLeft">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <button id="volUp" type="button" class="volWrap vRight">
+            <i class="fas fa-volume-mute"></i>
+        </button>
+        <span class="user-headset">
+            Headphones recommended <i class="fas fa-headphones"></i>
+        </span>
     </div>
-
     <div id="player"></div>
 
 </main>

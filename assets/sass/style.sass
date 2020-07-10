@@ -59,6 +59,7 @@ input:focus
 
 .form-wrap
     width: 500px
+    position: relative
     background-color: #fafafa
     padding: 2.2rem 2rem 1.8rem
     margin: 20vh auto
@@ -186,3 +187,34 @@ input:focus
 // Iframe
 iframe
     display: none
+
+.volWrap
+    left: 50%
+    opacity: 0
+    bottom: -70%
+    border: none
+    color: #c4c4c4
+    font-size: 32px
+    background-color: transparent
+    
+    position: absolute
+    transition: color .6s, transform 1s, opacity 1s
+    &:hover, &:focus
+        outline: none
+        color: #414141
+    &.vLeft
+        transform: translateX(-200%) translateY(-50%)
+    &.vRight
+        transform: translateX(150%) translateY(-50%)
+    &.shown
+        opacity: 1
+        transform: translate(-50%, -50%)
+
+.user-headset
+    left: 50%
+    bottom: -20%
+    transform: translate(-50%, -50%)
+    color: #c4c4c4
+    font-size: 12px
+    position: absolute
+

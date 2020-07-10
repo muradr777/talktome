@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TalkToMe</title>
     <link rel="stylesheet" href="/assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/9af195ccd9.js" crossorigin="anonymous"></script>
 </head>
 
 <header>
